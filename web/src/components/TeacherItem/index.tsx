@@ -8,7 +8,7 @@ function TeacherItem() {
     return (
         <article className="teacher-item">
             <header>
-                <img src="" alt="Pedro Stradiotti Neto" />
+                <img src="https://media-exp1.licdn.com/dms/image/C4D03AQHfhTlq5h003Q/profile-displayphoto-shrink_200_200/0?e=1602115200&v=beta&t=Z81isQRAMYvxTXpVegU1_uN4lNOtF-58LcQdfSGyPsk" alt="Pedro Stradiotti Neto" />
                 <div>
                     <strong>Pedro Stradiotti Neto</strong>
                     <span>Química</span>
