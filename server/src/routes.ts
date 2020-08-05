@@ -1,4 +1,4 @@
-import express, { response } from 'express';
+import express from 'express';
 import ClassesController from './controllers/classesController';
 import ConnectionController from './controllers/connectionsController';
 

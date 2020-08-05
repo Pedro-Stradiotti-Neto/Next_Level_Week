@@ -2,34 +2,51 @@ import React from 'react';
 
 import whatsAppIcon from '../../assets/images/icons/whatsapp.svg';
 
-import './styles.css'
+import './styles.css';
+import api from '../../services/api';
 
-function TeacherItem() {
+export interface Teacher {
+    id: number;
+    avatar: string;
+    bio: string;
+    cost: number;
+    name: string;
+    subject: string;
+    whatsapp: string
+}
+
+interface TeacherItemProps {
+    teacher: Teacher
+}
+
+const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
+    function createNewConnection() {
+        api.post('connections', {
+            user_id: teacher.id,
+        });
+    };
+
     return (
         <article className="teacher-item">
             <header>
-                <img src="https://media-exp1.licdn.com/dms/image/C4D03AQHfhTlq5h003Q/profile-displayphoto-shrink_200_200/0?e=1602115200&v=beta&t=Z81isQRAMYvxTXpVegU1_uN4lNOtF-58LcQdfSGyPsk" alt="Pedro Stradiotti Neto" />
+                <img src={teacher.avatar} alt={teacher.name} />
                 <div>
-                    <strong>Pedro Stradiotti Neto</strong>
-                    <span>Química</span>
+                    <strong>{teacher.name}</strong>
+                    <span>{teacher.subject}</span>
                 </div>
             </header>
 
-            <p>
-                Entusiasta das melhores tecnologias de química avancada.
-                        <br /><br />
-                        Apaixonado por explodir coisas em laboratórios e por mudar a vida das pessoas através de experiências. Mais de 200.000 pessoas já passaram por uma das minhas explosões.
-                    </p>
+            <p>{teacher.bio}</p>
 
             <footer>
                 <p>
                     Preco/Hora
-                            <strong>R$ 80,00</strong>
+                            <strong>{teacher.cost}</strong>
                 </p>
-                <button type='button'>
+                <a target="_blank" onClick={createNewConnection} href={`https://wa.me/${teacher.whatsapp}`}>
                     <img src={whatsAppIcon} alt="WhatsApp" />
                             Entrar em contato
-                        </button>
+                </a>
             </footer>
         </article>
     )
